@@ -1,0 +1,230 @@
+/* Importation de polices si nécessaire, par exemple de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+    --primary-color: #0056b3; /* Bleu foncé pour les titres */
+    --secondary-color: #333; /* Texte général */
+    --accent-color: #f0f0f0; /* Arrière-plan des sections */
+    --background-light: #fff;
+    --border-color: #eee;
+    --sidebar-bg: #e0e0e0; /* Couleur de la colonne latérale, ajustez selon l'image */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--secondary-color);
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligner en haut */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.cv-container {
+    width: 21cm; /* Format A4 */
+    min-height: 29.7cm; /* Format A4 */
+    background-color: var(--background-light);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Pour contenir les flottants si utilisés */
+}
+
+/* Header Section */
+.header {
+    background-color: var(--primary-color); /* Couleur à ajuster si votre image montre une couleur différente */
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Pour un header comme l'image où la photo est à gauche et le texte à droite */
+    background: linear-gradient(to right, #4a4a4a 30%, #3a3a3a 30%); /* Couleurs sombres comme sur l'image */
+    padding: 30px 40px;
+}
+
+.profile-photo {
+    border-radius: 50%; /* Pour une photo ronde */
+    overflow: hidden;
+    width: 120px; /* Taille de la photo */
+    height: 120px;
+    border: 3px solid white; /* Bordure blanche autour de la photo */
+    flex-shrink: 0; /* Empêche la photo de rétrécir */
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header-info h1 {
+    font-family: 'Playfair Display', serif; /* Pour un titre plus élégant */
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.header-info h2 {
+    font-size: 1.1em;
+    font-weight: 300;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    flex-grow: 1; /* Permet à main-content de prendre l'espace restant */
+}
+
+.sidebar {
+    width: 30%; /* Largeur de la colonne de gauche */
+    background-color: var(--sidebar-bg); /* Couleur de fond de la sidebar */
+    padding: 20px 30px;
+    border-right: 1px solid var(--border-color); /* Séparateur */
+    flex-shrink: 0; /* Empêche la sidebar de rétrécir */
+}
+
+.content-sections {
+    width: 70%; /* Largeur de la colonne de droite */
+    padding: 20px 30px;
+}
+
+/* Common Section Styling */
+.section-block {
+    margin-bottom: 30px;
+}
+
+.section-block h3 {
+    font-size: 1.3em;
+    color: var(--primary-color); /* Couleur des titres de section */
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color); /* Ligne sous les titres */
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Sidebar Sections */
+.contact-info ul,
+.languages ul,
+.skills ul,
+.interests ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.contact-info li,
+.skills li,
+.interests li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info li i {
+    margin-right: 10px;
+    color: var(--primary-color); /* Icônes bleues */
+}
+
+.languages li {
+    margin-bottom: 10px;
+}
+
+.language-level {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.language-level span {
+    width: 20px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 2px;
+}
+
+.language-level span.filled {
+    background-color: var(--primary-color);
+}
+
+/* Content Sections */
+.profile p {
+    text-align: justify;
+}
+
+.job-entry,
+.education-entry,
+.project-entry,
+.diploma-entry {
+    margin-bottom: 20px;
+}
+
+.job-entry h4,
+.education-entry h4,
+.project-entry h4,
+.diploma-entry h4 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.job-entry .date,
+.education-entry .date,
+.diploma-entry .date {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.job-entry ul,
+.education-entry ul,
+.project-entry ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.job-entry li,
+.education-entry li,
+.project-entry li {
+    margin-bottom: 5px;
+}
+
+/* Responsive (si vous voulez ajouter une adaptation pour petits écrans) */
+@media (max-width: 768px) {
+    .cv-container {
+        flex-direction: column;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .sidebar,
+    .content-sections {
+        width: 100%;
+        border-right: none;
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-photo {
+        margin-bottom: 15px;
+    }
+}
