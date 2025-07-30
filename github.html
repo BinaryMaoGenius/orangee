@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Complet - [Votre Nom]</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --text: #333;
+            --gray: #95a5a6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .cv-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: 0 auto 15px;
+            background: #ddd;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .photo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.3em;
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            margin: 8px 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .section {
+            padding: 25px 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            margin: 0 0 15px 0;
+            font-size: 1.5em;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .experience, .education, .certification, .project {
+            margin-bottom: 25px;
+        }
+        
+        .job-title, .degree, .certification-title, .project-title {
+            font-weight: 600;
+            font-size: 1.15em;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+        
+        .company, .school, .certification-org, .project-tech {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            color: var(--secondary);
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h4 {
+            margin: 0 0 8px 0;
+            color: var(--dark);
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+        
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .language {
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-name {
+            margin-right: 8px;
+            font-weight: 500;
+        }
+        
+        .language-level {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .project-links {
+            margin-top: 8px;
+        }
+        
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--secondary);
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 0.9em;
+        }
+        
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .skills-container {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                font-size: 12pt;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="header">
+            <div class="header-content">
+                <div class="photo">
+                    <!-- Remplacez par votre photo -->
+                    <img src="photo.jpg" alt="Photo de profil">
+                </div>
+                <h1>Jean Dupont</h1>
+                <p>Développeur Web Full Stack</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Profil Professionnel</h2>
+            <p>Développeur web expérimenté avec 5 ans d'expérience dans la création de sites web et applications performantes. Spécialisé en JavaScript (React, Node.js) avec une solide expertise en architecture front-end. Passionné par les solutions innovantes, les bonnes pratiques et les interfaces utilisateur intuitives.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Expérience Professionnelle</h2>
+            <div class="experience">
+                <div class="job-title">Développeur Front-end Senior</div>
+                <div class="company">Tech Solutions Inc., Paris</div>
+                <div class="date">Janvier 2020 - Présent</div>
+                <ul>
+                    <li>Conception et développement d'une application SaaS avec React/Redux utilisée par 50 000+ utilisateurs</li>
+                    <li>Optimisation des performances (réduction du temps de chargement de 40%)</li>
+                    <li>Mentorat de 3 développeurs juniors dans l'équipe</li>
+                    <li>Collaboration avec les équipes UX/UI et back-end</li>
+                </ul>
+            </div>
+            
+            <div class="experience">
+                <div class="job-title">Développeur Web Full Stack</div>
+                <div class="company">WebCréa, Lyon</div>
+                <div class="date">Mai 2018 - Décembre 2019</div>
+                <ul>
+                    <li>Développement de 15+ sites WordPress et applications web sur mesure</li>
+                    <li>Création d'une API REST avec Node.js pour un système de gestion de contenu</li>
+                    <li>Intégration de maquettes PSD en HTML/CSS responsive</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Projets</h2>
+            <div class="project">
+                <div class="project-title">Plateforme e-learning "DevMaster"</div>
+                <div class="project-tech">React, Node.js, MongoDB, AWS</div>
+                <div class="date">2022 - Projet personnel</div>
+                <ul>
+                    <li>Plateforme avec 50+ cours en ligne sur le développement web</li>
+                    <li>Système de suivi de progression et certifications</li>
+                    <li>Plus de 10 000 utilisateurs inscrits</li>
+                </ul>
+                <div class="project-links">
+                    <a href="#"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>Lien GitHub</a>
+                    <a href="#"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>Site live</a>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-title">Application de gestion de tâches "TaskFlow"</div>
+                <div class="project-tech">Vue.js, Firebase, Tailwind CSS</div>
+                <div class="date">2021 - Projet open source</div>
+                <ul>
+                    <li>Application avec système de drag-and-drop et collaboration en temps réel</li>
+                    <li>Plus de 500 étoiles sur GitHub</li>
+                    <li>Intégration continue avec GitHub Actions</li>
+                </ul>
+                <div class="project-links">
+                    <a href="#"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Formation</h2>
+            <div class="education">
+                <div class="degree">Master en Informatique - Spécialité Web</div>
+                <div class="school">Université Paris-Diderot</div>
+                <div class="date">2016 - 2018</div>
+                <ul>
+                    <li>Mémoire : "Optimisation des applications React avec Web Workers"</li>
+                </ul>
+            </div>
+            
+            <div class="education">
+                <div class="degree">Licence en Développement Web</div>
+                <div class="school">Université Lyon 1</div>
+                <div class="date">2013 - 2016</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certification">
+                <div class="certification-title">AWS Certified Developer - Associate</div>
+                <div class="certification-org">Amazon Web Services</div>
+                <div class="date">2023</div>
+            </div>
+            
+            <div class="certification">
+                <div class="certification-title">Professional Scrum Master I (PSM I)</div>
+                <div class="certification-org">Scrum.org</div>
+                <div class="date">2022</div>
+            </div>
+            
+            <div class="certification">
+                <div class="certification-title">React - The Complete Guide</div>
+                <div class="certification-org">Udemy</div>
+                <div class="date">2020</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Compétences Techniques</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>Front-end</h4>
+                    <div class="skills">
+                        <span class="skill">React</span>
+                        <span class="skill">Vue.js</span>
+                        <span class="skill">TypeScript</span>
+                        <span class="skill">HTML5</span>
+                        <span class="skill">CSS3</span>
+                        <span class="skill">SASS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Back-end</h4>
+                    <div class="skills">
+                        <span class="skill">Node.js</span>
+                        <span class="skill">Express</span>
+                        <span class="skill">MongoDB</span>
+                        <span class="skill">PostgreSQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Outils</h4>
+                    <div class="skills">
+                        <span class="skill">Git</span>
+                        <span class="skill">Docker</span>
+                        <span class="skill">Webpack</span>
+                        <span class="skill">Jest</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Langues</h2>
+            <div class="languages">
+                <div class="language">
+                    <span class="language-name">Français</span>
+                    <span class="language-level">(Langue maternelle)</span>
+                </div>
+                <div class="language">
+                    <span class="language-name">Anglais</span>
+                    <span class="language-level">(Courant - TOEIC 920)</span>
+                </div>
+                <div class="language">
+                    <span class="language-name">Espagnol</span>
+                    <span class="language-level">(Intermédiaire B2)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    +33 6 12 34 56 78
+                </div>
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    jean.dupont@email.com
+                </div>
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Paris, France
+                </div>
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    linkedin.com/in/jeandupont
+                </div>
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    github.com/jeandupont
+                </div>
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="M2 10h20"></path>
+                    </svg>
+                    jeandupont-dev.com
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
